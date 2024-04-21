@@ -3,7 +3,7 @@
 
 > YouTube Music clone project.
 
-### ✨ [Demo](https://google.com)
+### ✨ [Demo](https://yt-music-three.vercel.app/)
 
 ## Install
 
@@ -34,11 +34,6 @@ content: [
 ```
 
 - [Dark mode setup](https://ui.shadcn.com/docs/dark-mode/next)
-
-## Run tests
-
-```sh
-```
 
 ## Author
 
