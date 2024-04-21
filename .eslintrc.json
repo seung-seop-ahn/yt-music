@@ -1,3 +1,62 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:security/recommended",
+    "plugin:performance/recommended",
+    "plugin:promise/recommended",
+    "plugin:node/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "security",
+    "performance",
+    "promise",
+    "node",
+    "import",
+    "prettier"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"]
+    }],
+    "react/prop-types": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", {
+      "components": ["Link"],
+      "specialLink": ["hrefLeft", "hrefRight"],
+      "aspects": ["invalidHref", "preferButton"]
+    }],
+    "no-console": "warn",
+    "eqeqeq": ["error", "always"],
+    "curly": "error",
+    "import/no-unresolved": "error",
+    "node/no-missing-import": "warn",
+    "security/detect-object-injection": "off",
+    "performance/no-inefficient-regex": "warn",
+    "prettier/prettier": ["error"]
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
