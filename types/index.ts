@@ -1,5 +1,3 @@
-import { getPlaylistByOwner, getSongsByChannel } from '@/lib/dummyData'
-
 export interface Song {
   name: string
   channelId: number
