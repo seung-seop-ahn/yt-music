@@ -46,7 +46,7 @@ const Header = ({ children }) => {
   const headerRef = useRef()
 
   useEffect(() => {
-    const currentHeaderRef = headerRef
+    const currentHeaderRef = headerRef?.current
     const handleScroll = () => {
       const scrollValue = currentHeaderRef?.scrollTop
       setIsScrolled(scrollValue !== 0)
