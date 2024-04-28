@@ -7,10 +7,17 @@ import Image from 'next/image'
 import { getRandomElementFromArray } from '@/lib/utils'
 import WhiteButton from '@/components/elements/WhiteButton'
 import DarkButton from '@/components/elements/DarkButton'
+import usePlayerState from '@/hooks/usePlayerState'
 
 const PlaylistHead = ({ playlist = {} } = {}) => {
+  const { addSongList } = usePlayerState()
+
   const { playlistName, owner, songList } = playlist
   const randomSong = getRandomElementFromArray(songList)
+
+  const onClickPlay = () => {
+    addSongList(songList)
+  }
 
   return (
     <section>
@@ -25,7 +32,12 @@ const PlaylistHead = ({ playlist = {} } = {}) => {
             <div>{`${songList.length} Songs`}</div>
           </div>
           <ul className={'hidden lg:flex flex-row gap-4 mt-4'}>
-            <WhiteButton className={'w-[85px] text-[14px]'} icon={<FiPlay />} label={'play'} />
+            <WhiteButton
+              className={'w-[85px] text-[14px]'}
+              icon={<FiPlay />}
+              label={'Play'}
+              onClick={onClickPlay}
+            />
             <DarkButton
               className={'w-[135px] text-[14px]'}
               icon={<FiFolderPlus />}
@@ -36,7 +48,12 @@ const PlaylistHead = ({ playlist = {} } = {}) => {
         </article>
       </div>
       <ul className={'flex flex-row gap-4 mt-4 lg:hidden'}>
-        <WhiteButton className={'w-[85px] text-[14px]'} icon={<FiPlay />} label={'Play'} />
+        <WhiteButton
+          className={'w-[85px] text-[14px]'}
+          icon={<FiPlay />}
+          label={'Play'}
+          onClick={onClickPlay}
+        />
         <DarkButton
           className={'w-[135px] text-[14px]'}
           icon={<FiFolderPlus />}

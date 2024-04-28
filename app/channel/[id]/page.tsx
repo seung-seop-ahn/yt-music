@@ -9,6 +9,7 @@ import WhiteButton from '@/components/elements/WhiteButton'
 import { FiMusic, FiShuffle } from 'react-icons/fi'
 import SongCardRowExpand from '@/components/SongCardRowExpand'
 import PlaylistCarousel from '@/components/PlaylistCarousel'
+import ChannelHead from '@/app/channel/components/ChannelHead'
 
 interface ChannelPageProps {
   params: {
@@ -21,30 +22,13 @@ const page = async (props: ChannelPageProps) => {
   if (!channel) {
     permanentRedirect('/')
   }
-
   const imageSrc = getRandomElementFromArray(channel.songList)?.imageSrc
 
   return (
     <PagePadding>
       <HeaderBgChanger imageSrc={imageSrc} />
       <div className={'mt-[150px]'}></div>
-      <section>
-        <div className={'text-[28px] font-bold'}>{channel.name}</div>
-        <article className={'mt-4 lg:hidden'}>
-          <div>
-            <DarkButton className={'w-[230px] flex justify-center'} label={'Subscribe 4.18M'} />
-          </div>
-          <div className={'flex flex-row gap-4 mt-4'}>
-            <WhiteButton icon={<FiShuffle size={16} />} label={'Shuffle'} />
-            <WhiteButton icon={<FiMusic size={16} />} label={'Music Station'} />
-          </div>
-        </article>
-        <div className={'hidden lg:flex flex-row items-center gap-4 text-[14px] mt-4'}>
-          <WhiteButton icon={<FiShuffle size={16} />} label={'Shuffle'} />
-          <WhiteButton icon={<FiMusic size={16} />} label={'Music Station'} />
-          <DarkButton className={'w-[230px] flex justify-center'} label={'Subscribe 4.18M'} />
-        </div>
-      </section>
+      <ChannelHead channel={channel}/>
       <section className={'mt-[80px]'}>
         <div className={'text-[28px] font-bold'}>Song</div>
         <div className={'mt-[20px]'}>

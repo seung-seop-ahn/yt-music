@@ -3,9 +3,10 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 
-const WhiteButton = ({ icon = <></>, label, className = '', props = {} }) => {
+const WhiteButton = ({ icon = <></>, label, className = '', props = {}, onClick = {} }) => {
   return (
     <div
+      onClick={onClick}
       className={cn(
         `
         bg-white text-black rounded-2xl flex flex-row items-center

@@ -8,12 +8,14 @@ import { MdMoreVert } from 'react-icons/md'
 import { FiPlay } from 'react-icons/fi'
 import IconButton from '@/components/elements/IconButton'
 import { Playlist, TopSong } from '@/types'
+import usePlayerState from '@/hooks/usePlayerState'
 
 interface PlaylistCardProps {
   playlist: Playlist
 }
 
 const PlaylistCard: React.FC<PlaylistCardProps> = ({ playlist }) => {
+  const { addSongList } = usePlayerState()
   const { push } = useRouter()
   const { id, owner, playlistName, songList } = playlist
 
@@ -24,8 +26,9 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ playlist }) => {
     push(`/playlist?list=${id}`)
   }
 
-  const onClickPlay = () => {
-    // todo
+  const onClickPlay = (e: any) => {
+    e.stopPropagation()
+    addSongList(songList)
   }
 
   return (
