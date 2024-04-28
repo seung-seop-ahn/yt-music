@@ -17,3 +17,11 @@ export function getRandomElementFromArray(arr: any[]) {
   const len = arr?.length
   return arr[getRandomInt(0, len-1)]
 }
+
+export function chunkArray(arr: any[], chunkSize: number) {
+  const resultArray = []
+  for(let i = 0; i < arr.length; i += chunkSize) {
+    resultArray.push(arr.slice(i, i + chunkSize))
+  }
+  return resultArray
+}

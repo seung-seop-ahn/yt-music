@@ -1,21 +1,34 @@
 import React from 'react'
-import { Playlist } from '@/types'
+import { TopSong } from '@/types'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import PlaylistCard from '@/components/PlaylistCard'
+import { chunkArray } from '@/lib/utils'
+import SongCard from '@/components/SongCard'
 
-interface PlayListCarouselProps {
+interface SongListCarouselProps {
   title: string
   subTitle?: string
   thumbnail?: React.ReactNode
-  playlistArray?: Playlist[]
+  songListTop10: TopSong[]
 }
 
-const PlaylistCarousel: React.FC<PlayListCarouselProps> = ({
+const SongColumn = ({ songList = [] }: { songList: TopSong[] }) => {
+  return (
+    <div className={'flex flex-col gap-4'}>
+      {songList.map((song, idx) => {
+        return <SongCard key={idx} song={song} />
+      })}
+    </div>
+  )
+}
+
+const SongListCarousel: React.FC<SongListCarouselProps> = ({
                                                              title,
                                                              subTitle,
                                                              thumbnail,
-                                                             playlistArray,
+                                                             songListTop10,
                                                            }) => {
+  const chunkedTop10SongList = chunkArray(songListTop10, 4) as TopSong[][]
+
   return (
     <div className={'w-full'}>
       <Carousel>
@@ -23,22 +36,22 @@ const PlaylistCarousel: React.FC<PlayListCarouselProps> = ({
           <article className={'flex flex-row gap-3'}>
             {thumbnail}
             <div className={'flex flex-col justify-center'}>
-            <div>{subTitle && <div className={'text-neutral-500'}>{subTitle}</div>}</div>
-            <div className={'text-[34px] font-bold leading-[34px]'}>{title}</div>
+              <div>{subTitle && <div className={'text-neutral-500'}>{subTitle}</div>}</div>
+              <div className={'text-[34px] font-bold leading-[34px]'}>{title}</div>
             </div>
           </article>
           <div className={'relative left-[-45px]'}>
             <div className={'absolute bottom-[20px]'}>
               <CarouselPrevious className={'right-2'} />
-              <CarouselNext className={'left-2'}/>
+              <CarouselNext className={'left-2'} />
             </div>
           </div>
         </div>
         <CarouselContent>
-          {playlistArray?.map((playlist, index) => {
+          {chunkedTop10SongList?.map((songList, index) => {
             return (
-              <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                <PlaylistCard key={index} playlist={playlist} />
+              <CarouselItem key={index} className="lg:basis-1/2">
+                <SongColumn key={index} songList={songList} />
               </CarouselItem>
             )
           })}
@@ -49,4 +62,4 @@ const PlaylistCarousel: React.FC<PlayListCarouselProps> = ({
   )
 }
 
-export default PlaylistCarousel
+export default SongListCarousel

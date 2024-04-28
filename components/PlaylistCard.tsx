@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import { MdMoreVert } from 'react-icons/md'
 import { FiPlay } from 'react-icons/fi'
 import IconButton from '@/components/elements/IconButton'
-import { Playlist } from '@/types'
+import { Playlist, TopSong } from '@/types'
 
 interface PlaylistCardProps {
   playlist: Playlist
