@@ -46,14 +46,15 @@ const Header = ({ children }) => {
   const headerRef = useRef()
 
   useEffect(() => {
+    const currentHeaderRef = headerRef
     const handleScroll = () => {
-      const scrollValue = headerRef?.current?.scrollTop
+      const scrollValue = currentHeaderRef?.scrollTop
       setIsScrolled(scrollValue !== 0)
     }
 
-    headerRef?.current?.addEventListener('scroll', handleScroll)
+    currentHeaderRef?.addEventListener('scroll', handleScroll)
     return () => {
-      headerRef?.current?.removeEventListener('scroll', handleScroll)
+      currentHeaderRef?.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
