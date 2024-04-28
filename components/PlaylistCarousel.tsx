@@ -4,7 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import PlaylistCard from '@/components/PlaylistCard'
 
 interface PlayListCarouselProps {
-  title: string
+  title?: string
   subTitle?: string
   thumbnail?: React.ReactNode
   playlistArray?: Playlist[]
