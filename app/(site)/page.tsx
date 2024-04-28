@@ -1,16 +1,13 @@
 import React from 'react'
 import { sleep } from '@/lib/utils'
+import Category from '@/app/(site)/components/Category'
 
 const page = async () => {
   await sleep(2000)
   return (
     <div className={'min-h-[600px]'}>
-      {' '}
-      home
-      <div className={'h-[500px] bg-neutral-700'}>home</div>
-      <div className={'h-[500px] bg-neutral-700'}>home</div>
-      <div className={'h-[500px] bg-neutral-700'}>home</div>
-      <div className={'h-[500px] bg-neutral-700'}>home</div>
+      <div className={'mt-9'}></div>
+      <Category />
     </div>
   )
 }

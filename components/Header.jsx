@@ -19,6 +19,7 @@ import {
 import Logo from '@/components/elements/Logo'
 import Navigator from '@/components/elements/Navigator'
 import { cn } from '@/lib/utils'
+import useUIState from '@/hooks/useUIState'
 
 const HeaderDrawer = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,6 +40,8 @@ const HeaderDrawer = ({ children }) => {
 }
 
 const Header = ({ children }) => {
+  const { headerImageSrc, setHeaderImageSrc } = useUIState()
+
   const [isScrolled, setIsScrolled] = useState(false)
   const headerRef = useRef()
 
@@ -61,6 +64,7 @@ const Header = ({ children }) => {
           <Image
             fill
             src={
+              headerImageSrc ||
               'https://images.unsplash.com/photo-1708844897353-649da595a3f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMzk2NzYxOQ&ixlib=rb-4.0.3&q=80&w=1080'
             }
             alt={'background'}
